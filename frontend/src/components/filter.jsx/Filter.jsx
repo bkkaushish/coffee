@@ -12,16 +12,14 @@ export default function Filter(){
     const theme= useTheme();
     const colors = shades(theme.palette.mode);
     const {isCollapsed,setIsCollapsed,filters,setFilters,data}=useContext(UseContext);
-     const [options,setOption]=useState([]);
+     
    
      // Update filter state
     const handleFilterChanges =(event,key) => {
     
       // setFilters({...filters , [key]:event.target.value})
       const value = event.target.value;
-  console.log('Event:', event);
-  console.log('Key:', key);
-  console.log('Value:', value);
+ 
   setFilters(prevFilters => ({
     ...prevFilters,
     [key]: value !== false ? value : ''
@@ -29,9 +27,7 @@ export default function Filter(){
     
 
     };
-    useEffect(() => {
-      console.log('Filters:', filters);
-    }, [filters]);
+   
     // const handleFilterChangess = (event) => {
     //   setFilters({sectors:event.target.value})
     // };
@@ -97,7 +93,7 @@ return !isCollapsed?(
                     display="flex"
                     justifyContent="space-between"
                     alignItems="center"
-                    mr="50px"
+                    mr="40px"
                    
                     ml="15px"
                     mt="15px">
@@ -118,8 +114,70 @@ return !isCollapsed?(
             {/**menu items */}
             
             <Box paddingLeft={isCollapsed ? undefined: "10%"}>
+            <Box>
+          <Typography variant="h6" mt="10px" mb="10px">
+            Year :
+          </Typography>
+          <FormControl fullWidth variant="outlined">
+ {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
+ <Select
+value={filters.endYear}
+ sx={{mr:"4px"}}
+   onChange={(e)=>handleFilterChanges(e,"endYear")}
+ >
+ <MenuItem value="" ><em>none</em></MenuItem>
+  {uniqueValue('end_year').map((items)=>(
+   <MenuItem value={items} key={items}>{items}</MenuItem>
+ 
+  ))}
+ </Select>
+</FormControl>
+           </Box>
                 <Box>
-                    
+                <Box>
+          <Typography variant="h6" mt="10px" mb="10px">
+            Country :
+          </Typography>
+          
+          <FormControl fullWidth variant="outlined">
+ {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
+ <Select
+value={filters.country}
+sx={{mr:"4px"}}
+   onChange={(e)=>handleFilterChanges(e,"country")}
+ >
+ <MenuItem value="" ><em>none</em></MenuItem>
+  {uniqueValue('country').map((items)=>(
+   <MenuItem value={items} key={items}>{items}</MenuItem>
+ 
+  ))}
+ </Select>
+</FormControl>
+ 
+    
+           </Box>  
+           <Box>
+           <Typography variant="h6" mt="10px" mb="10px">
+          Sector :
+          </Typography>
+
+          
+          <FormControl fullWidth variant="outlined">
+ {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
+ <Select
+value={filters.sector}
+sx={{mr:"4px"}}
+   onChange={(e)=>handleFilterChanges(e,"sector")}
+ >
+ <MenuItem value="" ><em>none</em></MenuItem>
+  {uniqueValue('sector').map((items)=>(
+   <MenuItem value={items} key={items}>{items}</MenuItem>
+ 
+  ))}
+ </Select>
+</FormControl>   
+           </Box>
+   
                        
           <Typography variant="h6" mt="10px" mb="10px">
             Topic :
@@ -128,9 +186,9 @@ return !isCollapsed?(
           <FormControl fullWidth variant="outlined">
  {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
  <Select
- 
+ sx={{mr:"4px"}}
 value={filters.topic}
- label="Topic"
+ 
    onChange={(e)=> handleFilterChanges(e,"topic")}
  >
  <MenuItem value=""><em>none</em></MenuItem>
@@ -143,48 +201,9 @@ value={filters.topic}
 
            </Box>
 
-           <Box>
-           <Typography variant="h6" mt="10px" mb="10px">
-          Sector :
-          </Typography>
+           
 
           
-          <FormControl fullWidth variant="outlined">
- {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
- <Select
-value={filters.sector}
- label="sector"
-   onChange={(e)=>handleFilterChanges(e,"sector")}
- >
- <MenuItem value="" ><em>none</em></MenuItem>
-  {uniqueValue('sector').map((items)=>(
-   <MenuItem value={items} key={items}>{items}</MenuItem>
- 
-  ))}
- </Select>
-</FormControl>   
-           </Box>
-
-
-           <Box>
-          <Typography variant="h6" mt="10px" mb="10px">
-            Year :
-          </Typography>
-          <FormControl fullWidth variant="outlined">
- {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
- <Select
-value={filters.endYear}
- label="endYear"
-   onChange={(e)=>handleFilterChanges(e,"endYear")}
- >
- <MenuItem value="" ><em>none</em></MenuItem>
-  {uniqueValue('end_year').map((items)=>(
-   <MenuItem value={items} key={items}>{items}</MenuItem>
- 
-  ))}
- </Select>
-</FormControl>
-           </Box>
 
            <Box>
           <Typography variant="h6" mt="10px" mb="10px">
@@ -195,7 +214,7 @@ value={filters.endYear}
  {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
  <Select
 value={filters.region}
- label="region"
+sx={{mr:"4px"}}
    onChange={(e)=>handleFilterChanges(e,"region")}
  >
  <MenuItem value="" ><em>none</em></MenuItem>
@@ -215,7 +234,7 @@ value={filters.region}
  {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
  <Select
 value={filters.pest}
- label="pest"
+sx={{mr:"4px"}}
    onChange={(e)=>handleFilterChanges(e,"pest")}
  >
  <MenuItem value="" ><em>none</em></MenuItem>
@@ -235,7 +254,7 @@ value={filters.pest}
  {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
  <Select
 value={filters.source}
- label="topic"
+sx={{mr:"4px"}}
    onChange={(e)=>handleFilterChanges(e,"source")}
  >
  <MenuItem value="" ><em>none</em></MenuItem>
@@ -248,26 +267,25 @@ value={filters.source}
            </Box>
            <Box>
           <Typography variant="h6" mt="10px" mb="10px">
-            Country :
+            Insight :
           </Typography>
           
           <FormControl fullWidth variant="outlined">
  {/* <InputLabel id="demo-simple-select-label"> sector:</InputLabel> */}
  <Select
-value={filters.country}
- label="country"
-   onChange={(e)=>handleFilterChanges(e,"country")}
+value={filters.insight}
+sx={{mr:"4px"}}
+   onChange={(e)=>handleFilterChanges(e,"insight")}
  >
  <MenuItem value="" ><em>none</em></MenuItem>
-  {uniqueValue('country').map((items)=>(
+  {uniqueValue('insight').map((items)=>(
    <MenuItem value={items} key={items}>{items}</MenuItem>
  
   ))}
  </Select>
 </FormControl>
- 
-    
            </Box>
+          
             </Box>
             
         </Menu>

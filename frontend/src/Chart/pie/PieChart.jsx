@@ -7,7 +7,7 @@ export default function PieChart(){
     const {data,filters}=useContext(UseContext);
 
 // Filter data based on selected filters
- const filterData=()=>{
+const filterData=()=>{
   return data.filter(item=>{
     return(
       (filters.topic===''||item._id.topic===filters.topic)&&
@@ -16,7 +16,8 @@ export default function PieChart(){
       (filters.source===''||item._id.source===filters.source)&&
       (filters.pest===''||item._id.pest===filters.pest)&&
       (filters.endYear===''||item._id.end_year===filters.endYear)&&
-      (filters.country===''||item._id.country===filters.country)
+      (filters.country===''||item._id.country===filters.country)&&
+      (filters.insight===''||item._id.insight===filters.insight)
     );
   });
  

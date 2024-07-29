@@ -11,22 +11,8 @@ import RadarChart from "../Chart/Radar/RadarChart";
 export default function Dashboard(){
 const theme=useTheme();
 const colors=shades(theme.palette.mode);
-const{setIsCollapsed,data,filters}=useContext(UseContext);
-const filteredData=()=>{
-    return data.filter(item=>{
-      return(
-        // (filters.topic=''||item._id.topic===filters.topic)&&
-        (filters.sector===''||item._id.sector===filters.sector)&&
-        // (filters.region=''||item._id.region===filters.region)&&
-        // (filters.source=''||item._id.source===filters.source)&&
-        // (filters.pest=''||item._id.pest===filters.pest)&&
-        // (filters.endYear=''||item._id.end_year===filters.endYear)&&
-        (filters.country===''||item._id.country===filters.country)
-      );
-    });
-   
-  };
-  const filtersdata=filteredData();
+const{setIsCollapsed}=useContext(UseContext);
+
     return(
         <>
 

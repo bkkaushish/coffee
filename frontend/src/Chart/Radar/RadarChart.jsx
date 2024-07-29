@@ -18,7 +18,8 @@ export default function RadarChart(){
       (filters.source===''||item._id.source===filters.source)&&
       (filters.pest===''||item._id.pest===filters.pest)&&
       (filters.endYear===''||item._id.end_year===filters.endYear)&&
-      (filters.country===''||item._id.country===filters.country)
+      (filters.country===''||item._id.country===filters.country)&&
+      (filters.insight===''||item._id.insight===filters.insight)
     );
   });
  

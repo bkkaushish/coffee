@@ -9,20 +9,21 @@ export default function LineChart(){
     const {data,filters}=useContext(UseContext);
 
 // Filter data based on selected filters
- const filterData=()=>{
-  return data.filter(item=>{
-    return(
-      (filters.topic===''||item._id.topic===filters.topic)&&
-      (filters.sector===''||item._id.sector===filters.sector)&&
-      (filters.region===''||item._id.region===filters.region)&&
-      (filters.source===''||item._id.source===filters.source)&&
-      (filters.pest===''||item._id.pest===filters.pest)&&
-      (filters.endYear===''||item._id.end_year===filters.endYear)&&
-      (filters.country===''||item._id.country===filters.country)
-    );
-  });
- 
-};
+const filterData=()=>{
+    return data.filter(item=>{
+      return(
+        (filters.topic===''||item._id.topic===filters.topic)&&
+        (filters.sector===''||item._id.sector===filters.sector)&&
+        (filters.region===''||item._id.region===filters.region)&&
+        (filters.source===''||item._id.source===filters.source)&&
+        (filters.pest===''||item._id.pest===filters.pest)&&
+        (filters.endYear===''||item._id.end_year===filters.endYear)&&
+        (filters.country===''||item._id.country===filters.country)&&
+        (filters.insight===''||item._id.insight===filters.insight)
+      );
+    });
+   
+  };
 
 const datas=filterData();
 

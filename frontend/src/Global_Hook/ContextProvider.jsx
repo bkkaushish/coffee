@@ -11,7 +11,8 @@ export const ContextProvider=({children})=>{
         region:'',
         pest:'',
         source:'',
-        country:''
+        country:'',
+        insight:''
       });
  
 
